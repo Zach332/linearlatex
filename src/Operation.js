@@ -34,6 +34,10 @@ export default function Operation({index, operation, setOperation, updateNext}) 
         }
     }
 
+    const changeType = (event) => {
+        setOperation(index, {...operation, type: event.target.value});
+    }
+
     const adjustStartRow = (event) => {
         let row = parseInt(event.target.value) - 1;
         setOperation(index, {...operation, startRow: row});
@@ -45,14 +49,50 @@ export default function Operation({index, operation, setOperation, updateNext}) 
         let row = parseInt(event.target.value) - 1;
         setOperation(index, {...operation, otherRow: row});
     }
+
+    var operationDetails;
+    if(operation.type == "scale") {
+        operationDetails = (
+            <span>
+                {" row "}
+                <input width="10" placeholder="row #" onChange={adjustStartRow} className="p-2"></input>
+                {" *= "}
+                <input onChange={adjustMultiplier} placeholder="multiplier" className="p-2"></input>
+            </span>
+        )
+    } else if(operation.type == "switch") {
+        operationDetails = (
+            <span>
+                {" row "}
+                <input width="10" placeholder="row #" onChange={adjustStartRow} className="p-2"></input>
+                {" <-> row "}
+                <input onChange={adjustOtherRow} placeholder="row #" className="p-2"></input>
+            </span>
+        )
+    } else {
+        operationDetails = (
+            <span>
+                {" row "}
+                <input width="10" onChange={adjustStartRow} placeholder="row #" className="p-2"></input>
+                {" += "}
+                <input onChange={adjustMultiplier} placeholder="multiplier" className="p-2"></input>
+                {" * row "}
+                <input onChange={adjustOtherRow} placeholder="row #" className="p-2"></input>
+            </span>
+        )
+    }
     return (
         <div>
-            {"row "}
-            <input width="10" onChange={adjustStartRow} className="p-2"></input>
-            {" = itself + "}
-            <input onChange={adjustMultiplier} className="p-2"></input>
-            {" x row "}
-            <input onChange={adjustOtherRow} className="p-2"></input>
+            <select
+                onChange={changeType}
+                value={operation.type}
+                style={{width: 100}}
+            >
+                <option value="add">Add</option>
+                <option value="scale">Scale</option>
+                <option value="switch">Switch</option>
+            </select>
+            {operationDetails}
             {operation.showMatrix && <Matrix matrix={operation.matrix} />}
         </div>
     )

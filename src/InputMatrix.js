@@ -40,9 +40,9 @@ export default function InputMatrix( { setMatrix } ) {
     return (
         <div>
             <div className="p-3"></div>
-            <input width="10" onChange={changeRows} className="p-2"></input>
+            <input width="10" onChange={changeRows} placeholder="rows" className="p-2"></input>
             {" x "}
-            <input onChange={changeCols} className="p-2"></input>
+            <input onChange={changeCols} placeholder="columns" className="p-2"></input>
             <div className="p-3"></div>
             {keys.map((row => (
                 <div className="d-flex justify-content-center">
