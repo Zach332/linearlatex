@@ -1,5 +1,4 @@
 import React from 'react'
-import { display } from './math'
 
 export default function Latex({ operations }) {
     const [latex, setLatex] = React.useState("");
@@ -24,11 +23,11 @@ export default function Latex({ operations }) {
         for(var i = 0; i < operation.matrix.length; i++) {
             for(var j = 0; j < operation.matrix[i].length; j++) {
                 if(j != operation.matrix[i].length - 1) {
-                    opLatex += display(operation.matrix[i][j]) + " & ";
+                    opLatex += ldisplay(operation.matrix[i][j]) + " & ";
                 } else if(i == operation.matrix.length - 1) {
-                    opLatex += display(operation.matrix[i][j]) + "\n";
+                    opLatex += ldisplay(operation.matrix[i][j]) + "\n";
                 } else {
-                    opLatex += display(operation.matrix[i][j]) + "\\\\\n";
+                    opLatex += ldisplay(operation.matrix[i][j]) + "\\\\\n";
                 }
             }
         }
@@ -36,16 +35,23 @@ export default function Latex({ operations }) {
         opLatex += "\\end{displaymath}";
         return opLatex;
     }
-    
+
+    const ldisplay = (frac) => {
+        if(frac[1] == 1) {
+            return frac[0];
+        } else {
+            return "\\frac{" + frac[0] + "}{" + frac[1] + "}";
+        }
+    }
 
     return (
-        <div className="card">
+        <div className="card mt-4">
             <div className="card-body">
                 <h5 className="card-title">Latex</h5>
                 <p className="card-text" style={{ whiteSpace: "pre", textAlign: "left" }}>
                     {latex}
                 </p>
-                <a href="#" className="btn btn-primary">Overleaf</a>
+                <a href="https://www.overleaf.com/" target="_blank" className="btn btn-primary">Overleaf</a>
             </div>
         </div>
         
