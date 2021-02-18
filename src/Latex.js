@@ -57,6 +57,7 @@ export default function Latex({ operations }) {
                 <p className="card-text" style={{ whiteSpace: "pre", textAlign: "left" }}>
                     {latex}
                 </p>
+                <button className="btn btn-info me-3" onClick={() => {navigator.clipboard.writeText(latex)}}>Copy to clipboard</button>
                 <a href="https://www.overleaf.com/" target="_blank" className="btn btn-primary">Overleaf</a>
             </div>
         </div>
