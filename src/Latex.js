@@ -18,7 +18,7 @@ export default function Latex({ operations }) {
 
     const getOpLatex = (operation) => {
         var opLatex = "\\begin{displaymath}\n";
-        opLatex += "r_" + (parseInt(operation.startRow) + 1) + " \\rightsquigarrow r_" + (parseInt(operation.startRow) + 1) + " + r_" + (parseInt(operation.otherRow) + 1) + "\n";
+        opLatex += "r_" + (parseInt(operation.startRow) + 1) + " \\rightsquigarrow r_" + (parseInt(operation.startRow) + 1) + " + " + ldisplay(operation.multiplier) + "r_" + (parseInt(operation.otherRow) + 1) + "\n";
         opLatex += "\\begin{bmatrix}\n";
         for(var i = 0; i < operation.matrix.length; i++) {
             for(var j = 0; j < operation.matrix[i].length; j++) {
