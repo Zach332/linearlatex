@@ -7,7 +7,7 @@ export default function Matrix( { matrix }) {
             {matrix.map((row => (
                 <div className="d-flex justify-content-center">
                     {row.map(num => (
-                        <div class="p-2">{display(num)}</div>
+                        <div className="p-2" style={{width: 75}}>{display(num)}</div>
                     ))}
                 </div>
             )))}

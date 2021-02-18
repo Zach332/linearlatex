@@ -91,7 +91,7 @@ export default function Operation({index, operation, setOperation, updateNext}) 
                 {" row "}
                 <input width="10" placeholder="row #" value={operation.startRow} onChange={adjustStartRow} className="p-2"></input>
                 {" *= "}
-                <input value={display(operation.multiplier)} onChange={adjustMultiplier} placeholder="multiplier" className="p-2"></input>
+                <input defaultValue={display(operation.multiplier)} onChange={adjustMultiplier} placeholder="multiplier" className="p-2"></input>
             </span>
         )
     } else if(operation.type == "switch") {
@@ -109,7 +109,7 @@ export default function Operation({index, operation, setOperation, updateNext}) 
                 {" row "}
                 <input width="10" value={operation.startRow} onChange={adjustStartRow} placeholder="row #" className="p-2"></input>
                 {" += "}
-                <input value={display(operation.multiplier)} onChange={adjustMultiplier} placeholder="multiplier" className="p-2"></input>
+                <input defaultValue={display(operation.multiplier)} onChange={adjustMultiplier} placeholder="multiplier" className="p-2"></input>
                 {" * row "}
                 <input value={operation.otherRow} onChange={adjustOtherRow} placeholder="row #" className="p-2"></input>
             </span>

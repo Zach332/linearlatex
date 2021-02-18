@@ -64,7 +64,7 @@ export default function InputMatrix( { matrix, setMatrix } ) {
             {keys.map((row => (
                 <div className="d-flex justify-content-center">
                     {row.map(key => (
-                        <input key={key} index={key} value={display(matrix[x(key)][y(key)])} onChange={updateMatrix} className="p-2"></input>
+                        <input key={key} index={key} defaultValue={display(matrix[x(key)][y(key)])} onChange={updateMatrix} className="p-2"></input>
                     ))}
                 </div>
             )))}
