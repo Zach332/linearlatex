@@ -11,7 +11,11 @@ function App() {
     const [operations, setOperations] = React.useState([{prevMatrix: matrix}]);
 
     React.useEffect(() => {
-        setOperations([{prevMatrix: matrix}]);
+        if(operations.length > 1) {
+            setOperations((oldOperations) => [{...oldOperations[0], prevMatrix: matrix}, ...oldOperations.slice(1)]);
+        } else {
+            setOperations((oldOperations) => [{...oldOperations[0], prevMatrix: matrix}]);
+        }
     }, [matrix])
     return (
         <div className="App">

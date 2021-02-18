@@ -15,6 +15,7 @@ export default function Operation({index, operation, setOperation, updateNext}) 
     }, [operation.prevMatrix, operation.startRow, operation.multiplier, operation.otherRow])
 
     const updateOperation = () => {
+        console.log(operation)
         if(operation.startRow && operation.multiplier && operation.otherRow) {
             var newMatrix = [];
             for(var i = 0; i < operation.prevMatrix.length; i++) {
