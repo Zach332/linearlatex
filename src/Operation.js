@@ -30,7 +30,6 @@ export default function Operation({index, operation, setOperation}) {
                 newMatrix.push(thisRow);
             }
             setOperation(index, {...operation, matrix: newMatrix, showMatrix: true})
-            console.log(operation)
         }
     }
 

@@ -3,6 +3,7 @@ import React from "react";
 import Matrix from './Matrix';
 import InputMatrix from './InputMatrix';
 import Operations from './Operations';
+import Latex from './Latex';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <InputMatrix setMatrix={setMatrix}/>
             <Matrix matrix={matrix} />
             <Operations operations={operations} setOperations={setOperations}/>
+            <Latex operations={operations} />
         </div>
     );
 }
