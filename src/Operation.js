@@ -15,7 +15,41 @@ export default function Operation({index, operation, setOperation, updateNext}) 
     }, [operation.prevMatrix, operation.startRow, operation.multiplier, operation.otherRow])
 
     const updateOperation = () => {
-        if(operation.startRow != null && operation.multiplier != null && operation.otherRow != null) {
+        if(operation.type == "scale" && Number.isInteger(operation.startRow) && operation.multiplier != null) {
+            var newMatrix = [];
+            for(var i = 0; i < operation.prevMatrix.length; i++) {
+                var thisRow;
+                if(i == operation.startRow) {
+                    thisRow = [];
+                    for(var j = 0; j < operation.prevMatrix.length; j++) {
+                        thisRow.push(mult(operation.multiplier, operation.prevMatrix[operation.startRow][j]));
+                    }
+                } else {
+                    thisRow = operation.prevMatrix[i];
+                }
+                newMatrix.push(thisRow);
+            }
+            setOperation(index, {...operation, matrix: newMatrix, showMatrix: true})
+            updateNext(index, newMatrix);
+        } else if(operation.type == "switch" && Number.isInteger(operation.startRow) && Number.isInteger(operation.otherRow)) {
+            var newMatrix = [];
+            console.log(operation)
+            var row1 = JSON.parse(JSON.stringify(operation.prevMatrix[operation.startRow]));
+            var row2 = JSON.parse(JSON.stringify(operation.prevMatrix[operation.otherRow]));
+            for(var i = 0; i < operation.prevMatrix.length; i++) {
+                var thisRow;
+                if(i == operation.startRow) {
+                    thisRow = row2;
+                } else if(i == operation.otherRow) {
+                    thisRow = row1;
+                } else {
+                    thisRow = operation.prevMatrix[i];
+                }
+                newMatrix.push(thisRow);
+            }
+            setOperation(index, {...operation, matrix: newMatrix, showMatrix: true})
+            updateNext(index, newMatrix);
+        } else if(Number.isInteger(operation.startRow) && operation.multiplier != null && Number.isInteger(operation.otherRow)) {
             var newMatrix = [];
             for(var i = 0; i < operation.prevMatrix.length; i++) {
                 var thisRow;
