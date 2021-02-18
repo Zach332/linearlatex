@@ -6,6 +6,8 @@ export default function Latex({ operations }) {
     React.useEffect(() => {
         try {
             var newLatex = "";
+            newLatex += getInitialMatrix(operations[0]) + "\n\n";
+            newLatex += "Obtain RREF:\n\n"
             for(var i = 0; i < operations.length - 1; i++) {
                 newLatex += getOpLatex(operations[i]) + "\n\n";
             }
@@ -42,8 +44,33 @@ export default function Latex({ operations }) {
         return opLatex;
     }
 
+    const getInitialMatrix = (operation) => {
+        var opLatex = "\\section{}\n\n";
+        opLatex += "Augmented matrix:\n\n";
+        opLatex += "\\begin{displaymath}\n";
+        opLatex += "\\begin{bmatrix}\n";
+        for(var i = 0; i < operation.prevMatrix.length; i++) {
+            for(var j = 0; j < operation.prevMatrix[i].length; j++) {
+                if(j != operation.prevMatrix[i].length - 1) {
+                    opLatex += ldisplay(operation.prevMatrix[i][j]) + " & ";
+                } else if(i == operation.prevMatrix.length - 1) {
+                    opLatex += ldisplay(operation.prevMatrix[i][j]) + "\n";
+                } else {
+                    opLatex += ldisplay(operation.prevMatrix[i][j]) + "\\\\\n";
+                }
+            }
+        }
+        opLatex += "\\end{bmatrix}\n";
+        opLatex += "\\end{displaymath}";
+        return opLatex;
+    }
+
     const ldisplay = (frac) => {
-        if(frac[1] == 1) {
+        if(frac[1] == 1 && frac[0] == 1) {
+            return "";
+        } else if(frac[1] == 1 && frac[0] == -1) {
+            return "-";
+        } else if(frac[1] == 1) {
             return frac[0];
         } else {
             return "\\frac{" + frac[0] + "}{" + frac[1] + "}";
@@ -59,6 +86,9 @@ export default function Latex({ operations }) {
                 </p>
                 <button className="btn btn-info me-3" onClick={() => {navigator.clipboard.writeText(latex)}}>Copy to clipboard</button>
                 <a href="https://www.overleaf.com/" target="_blank" className="btn btn-primary">Overleaf</a>
+                <p className="card-text" style={{ whiteSpace: "pre", textAlign: "left" }}>
+                    {"Remember to add:\n\\usepackage{amsmath}\n\\usepackage{amssymb}\n\\usepackage{systeme}}"}
+                </p>
             </div>
         </div>
         
