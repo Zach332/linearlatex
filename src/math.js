@@ -17,6 +17,7 @@ export const add = (i1, i2) => {
 }
 
 export const display = (frac) => {
+    if(frac == null)return "";
     if(frac[1] == 1) {
         return frac[0];
     } else {

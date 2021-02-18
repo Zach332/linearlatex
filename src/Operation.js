@@ -1,6 +1,6 @@
 import React from 'react'
 import Matrix from './Matrix';
-import { frac, mult, add } from './math'
+import { frac, mult, add, display } from './math'
 
 export default function Operation({index, operation, setOperation, updateNext}) {
 
@@ -89,29 +89,29 @@ export default function Operation({index, operation, setOperation, updateNext}) 
         operationDetails = (
             <span>
                 {" row "}
-                <input width="10" placeholder="row #" onChange={adjustStartRow} className="p-2"></input>
+                <input width="10" placeholder="row #" value={operation.startRow} onChange={adjustStartRow} className="p-2"></input>
                 {" *= "}
-                <input onChange={adjustMultiplier} placeholder="multiplier" className="p-2"></input>
+                <input value={display(operation.multiplier)} onChange={adjustMultiplier} placeholder="multiplier" className="p-2"></input>
             </span>
         )
     } else if(operation.type == "switch") {
         operationDetails = (
             <span>
                 {" row "}
-                <input width="10" placeholder="row #" onChange={adjustStartRow} className="p-2"></input>
+                <input width="10" placeholder="row #" value={operation.startRow} onChange={adjustStartRow} className="p-2"></input>
                 {" <-> row "}
-                <input onChange={adjustOtherRow} placeholder="row #" className="p-2"></input>
+                <input value={operation.otherRow} onChange={adjustOtherRow} placeholder="row #" className="p-2"></input>
             </span>
         )
     } else {
         operationDetails = (
             <span>
                 {" row "}
-                <input width="10" onChange={adjustStartRow} placeholder="row #" className="p-2"></input>
+                <input width="10" value={operation.startRow} onChange={adjustStartRow} placeholder="row #" className="p-2"></input>
                 {" += "}
-                <input onChange={adjustMultiplier} placeholder="multiplier" className="p-2"></input>
+                <input value={display(operation.multiplier)} onChange={adjustMultiplier} placeholder="multiplier" className="p-2"></input>
                 {" * row "}
-                <input onChange={adjustOtherRow} placeholder="row #" className="p-2"></input>
+                <input value={operation.otherRow} onChange={adjustOtherRow} placeholder="row #" className="p-2"></input>
             </span>
         )
     }
