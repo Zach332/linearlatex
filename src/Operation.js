@@ -74,14 +74,18 @@ export default function Operation({index, operation, setOperation, updateNext}) 
 
     const adjustStartRow = (event) => {
         let row = parseInt(event.target.value) - 1;
-        setOperation(index, {...operation, startRow: row});
+        if(!(row < 0 || row >= operation.prevMatrix.length)) {
+            setOperation(index, {...operation, startRow: row});
+        }
     }
     const adjustMultiplier = (event) => {
         setOperation(index, {...operation, multiplier: frac(event.target.value)});
     }
     const adjustOtherRow = (event) => {
         let row = parseInt(event.target.value) - 1;
-        setOperation(index, {...operation, otherRow: row});
+        if(!(row < 0 || row >= operation.prevMatrix.length)) {
+            setOperation(index, {...operation, otherRow: row});
+        }
     }
 
     const inc = (row) => {
