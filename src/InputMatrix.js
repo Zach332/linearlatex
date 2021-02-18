@@ -28,10 +28,14 @@ export default function InputMatrix( { matrix, setMatrix } ) {
     }, [rows, cols]);
 
     const changeRows = (event) => {
-        setRows(event.target.value)
+        if(event.target.value != "") {
+            setRows(event.target.value)
+        }
     }
     const changeCols = (event) => {
-        setCols(event.target.value)
+        if(event.target.value != "") {
+            setCols(event.target.value)
+        }
     }
 
     const updateMatrix = (event) => {

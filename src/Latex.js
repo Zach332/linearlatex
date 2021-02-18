@@ -53,7 +53,7 @@ export default function Latex({ operations }) {
     return (
         <div className="card mt-4">
             <div className="card-body">
-                <h5 className="card-title">Latex</h5>
+                <h5 className="card-title">LaTeX</h5>
                 <p className="card-text" style={{ whiteSpace: "pre", textAlign: "left" }}>
                     {latex}
                 </p>
