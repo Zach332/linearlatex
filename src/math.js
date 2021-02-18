@@ -29,7 +29,7 @@ const simplify = (frac) => {
         frac[1] = 1;
         return frac;
     }
-    var min = Math.min(frac[0], frac[1]);
+    var min = Math.min(Math.abs(frac[0]), Math.abs(frac[1]));
     for(var i = 2; i <= min; i++) {
         if((frac[0] / i) % 1 == 0 && (frac[1] / i) % 1 == 0) {
             frac[0] /= i;
