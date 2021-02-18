@@ -1,5 +1,6 @@
 import React from 'react'
 import Matrix from './Matrix';
+import { frac, mult, add } from './math'
 
 export default function Operation({index, operation, setOperation}) {
 
@@ -21,7 +22,7 @@ export default function Operation({index, operation, setOperation}) {
                 if(i == operation.startRow) {
                     thisRow = [];
                     for(var j = 0; j < operation.prevMatrix.length; j++) {
-                        thisRow.push(operation.prevMatrix[operation.startRow][j] + (operation.multiplier * operation.prevMatrix[operation.otherRow][j]));
+                        thisRow.push(add(operation.prevMatrix[operation.startRow][j], mult(operation.multiplier, operation.prevMatrix[operation.otherRow][j])));
                     }
                 } else {
                     thisRow = operation.prevMatrix[i];
@@ -29,6 +30,7 @@ export default function Operation({index, operation, setOperation}) {
                 newMatrix.push(thisRow);
             }
             setOperation(index, {...operation, matrix: newMatrix, showMatrix: true})
+            console.log(operation)
         }
     }
 
@@ -36,7 +38,7 @@ export default function Operation({index, operation, setOperation}) {
         setOperation(index, {...operation, startRow: event.target.value});
     }
     const adjustMultiplier = (event) => {
-        setOperation(index, {...operation, multiplier: event.target.value});
+        setOperation(index, {...operation, multiplier: frac(event.target.value)});
     }
     const adjustOtherRow = (event) => {
         setOperation(index, {...operation, otherRow: event.target.value});

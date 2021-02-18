@@ -1,4 +1,5 @@
 import React from 'react'
+import { frac } from './math'
 
 export default function InputMatrix( { setMatrix } ) {
     const [keys, setKeys] = React.useState([[]]);
@@ -13,7 +14,7 @@ export default function InputMatrix( { setMatrix } ) {
             var thisNewMatRow = [];
             for(var j = 0; j < cols; j++) {
                 thisRow.push(i+","+j);
-                thisNewMatRow.push(0);
+                thisNewMatRow.push([0,1]);
             }
             newKeys.push(thisRow)
             newMat.push(thisNewMatRow);
@@ -33,7 +34,7 @@ export default function InputMatrix( { setMatrix } ) {
         let keyArr = event.target.getAttribute("index").split(",");
         let i = parseInt(keyArr[0]);
         let j = parseInt(keyArr[1]);
-        setMatrix((matrix) => [...matrix.slice(0, i), [...matrix[i].slice(0, j), event.target.value, ...matrix[i].slice(j+1,matrix[i].length)], ...matrix.slice(i+1, matrix.length)])
+        setMatrix((matrix) => [...matrix.slice(0, i), [...matrix[i].slice(0, j), frac(event.target.value), ...matrix[i].slice(j+1,matrix[i].length)], ...matrix.slice(i+1, matrix.length)])
     }
 
     return (

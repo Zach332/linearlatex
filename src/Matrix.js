@@ -1,4 +1,5 @@
 import React from 'react'
+import { display } from './math'
 
 export default function Matrix( { matrix }) {
     return (
@@ -6,7 +7,7 @@ export default function Matrix( { matrix }) {
             {matrix.map((row => (
                 <div className="d-flex justify-content-center">
                     {row.map(num => (
-                        <div class="p-2">{num}</div>
+                        <div class="p-2">{display(num)}</div>
                     ))}
                 </div>
             )))}

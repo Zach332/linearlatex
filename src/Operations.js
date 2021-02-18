@@ -5,7 +5,7 @@ export default function Operations({operations, setOperations}) {
 
     React.useEffect(() => {
         if(operations[operations.length - 1].showMatrix) {
-            setOperations((oldOperations) => oldOperations.concat({prevMatrix: oldOperations[oldOperations.length - 1]}))
+            setOperations((oldOperations) => oldOperations.concat({prevMatrix: oldOperations[oldOperations.length - 1].matrix}))
         }
     }, [operations])
 
