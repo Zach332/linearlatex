@@ -2,7 +2,7 @@ import React from 'react'
 import Matrix from './Matrix';
 import { frac, mult, add } from './math'
 
-export default function Operation({index, operation, setOperation}) {
+export default function Operation({index, operation, setOperation, updateNext}) {
 
     React.useEffect(() => {
         if(!operation.showMatrix) {
@@ -30,6 +30,7 @@ export default function Operation({index, operation, setOperation}) {
                 newMatrix.push(thisRow);
             }
             setOperation(index, {...operation, matrix: newMatrix, showMatrix: true})
+            updateNext(index, newMatrix);
         }
     }
 
