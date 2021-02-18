@@ -84,12 +84,20 @@ export default function Operation({index, operation, setOperation, updateNext}) 
         setOperation(index, {...operation, otherRow: row});
     }
 
+    const inc = (row) => {
+        if(row == null || row === "") {
+            return "";
+        } else {
+            return row + 1;
+        }
+    }
+
     var operationDetails;
     if(operation.type == "scale") {
         operationDetails = (
             <span>
                 {" row "}
-                <input width="10" placeholder="row #" value={operation.startRow} onChange={adjustStartRow} className="p-2"></input>
+                <input width="10" placeholder="row #" defaultValue={inc(operation.startRow)} onChange={adjustStartRow} className="p-2"></input>
                 {" *= "}
                 <input defaultValue={display(operation.multiplier)} onChange={adjustMultiplier} placeholder="multiplier" className="p-2"></input>
             </span>
@@ -98,20 +106,20 @@ export default function Operation({index, operation, setOperation, updateNext}) 
         operationDetails = (
             <span>
                 {" row "}
-                <input width="10" placeholder="row #" value={operation.startRow} onChange={adjustStartRow} className="p-2"></input>
+                <input width="10" placeholder="row #" defaultValue={inc(operation.startRow)} onChange={adjustStartRow} className="p-2"></input>
                 {" <-> row "}
-                <input value={operation.otherRow} onChange={adjustOtherRow} placeholder="row #" className="p-2"></input>
+                <input defaultValue={inc(operation.otherRow)} onChange={adjustOtherRow} placeholder="row #" className="p-2"></input>
             </span>
         )
     } else {
         operationDetails = (
             <span>
                 {" row "}
-                <input width="10" value={operation.startRow} onChange={adjustStartRow} placeholder="row #" className="p-2"></input>
+                <input width="10" defaultValue={inc(operation.startRow)} onChange={adjustStartRow} placeholder="row #" className="p-2"></input>
                 {" += "}
                 <input defaultValue={display(operation.multiplier)} onChange={adjustMultiplier} placeholder="multiplier" className="p-2"></input>
                 {" * row "}
-                <input value={operation.otherRow} onChange={adjustOtherRow} placeholder="row #" className="p-2"></input>
+                <input defaultValue={inc(operation.otherRow)} onChange={adjustOtherRow} placeholder="row #" className="p-2"></input>
             </span>
         )
     }
