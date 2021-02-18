@@ -15,8 +15,7 @@ export default function Operation({index, operation, setOperation, updateNext}) 
     }, [operation.prevMatrix, operation.startRow, operation.multiplier, operation.otherRow])
 
     const updateOperation = () => {
-        console.log(operation)
-        if(operation.startRow && operation.multiplier && operation.otherRow) {
+        if(operation.startRow != null && operation.multiplier != null && operation.otherRow != null) {
             var newMatrix = [];
             for(var i = 0; i < operation.prevMatrix.length; i++) {
                 var thisRow;
@@ -36,13 +35,15 @@ export default function Operation({index, operation, setOperation, updateNext}) 
     }
 
     const adjustStartRow = (event) => {
-        setOperation(index, {...operation, startRow: event.target.value});
+        let row = parseInt(event.target.value) - 1;
+        setOperation(index, {...operation, startRow: row});
     }
     const adjustMultiplier = (event) => {
         setOperation(index, {...operation, multiplier: frac(event.target.value)});
     }
     const adjustOtherRow = (event) => {
-        setOperation(index, {...operation, otherRow: event.target.value});
+        let row = parseInt(event.target.value) - 1;
+        setOperation(index, {...operation, otherRow: row});
     }
     return (
         <div>
