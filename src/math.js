@@ -1,6 +1,9 @@
 export const frac = (input) => {
     if(isLetter(input.slice(-1))) {
         var variable = input.slice(-1);
+        if(input.length == 1) {
+            return [0, 1, [[1, 1], variable]];
+        }
         var parts = input.slice(0,input.length - 1).split("/");
         var num = parseInt(parts[0]);
         var den = parts.length > 1?parseInt(parts[1]):1;

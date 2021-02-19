@@ -21,7 +21,7 @@ export default function Operation({index, operation, setOperation, updateNext}) 
                 var thisRow;
                 if(i == operation.startRow) {
                     thisRow = [];
-                    for(var j = 0; j < operation.prevMatrix.length; j++) {
+                    for(var j = 0; j < operation.prevMatrix[i].length; j++) {
                         thisRow.push(mult(operation.multiplier, operation.prevMatrix[operation.startRow][j]));
                     }
                 } else {
