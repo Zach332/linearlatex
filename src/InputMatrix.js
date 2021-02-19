@@ -3,8 +3,8 @@ import { frac, display } from './math'
 
 export default function InputMatrix( { matrix, setMatrix } ) {
     const [keys, setKeys] = React.useState([[]]);
-    const [rows, setRows] = React.useState(3);
-    const [cols, setCols] = React.useState(3);
+    const [rows, setRows] = React.useState(matrix.length);
+    const [cols, setCols] = React.useState(matrix[0].length);
 
     React.useEffect(() => {
         var newKeys = [];
