@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/linearlatex/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/linearlatex/static/js/main.d5146b96.chunk.js",
+    "main.js.map": "/linearlatex/static/js/main.d5146b96.chunk.js.map",
+    "runtime-main.js": "/linearlatex/static/js/runtime-main.312c88a8.js",
+    "runtime-main.js.map": "/linearlatex/static/js/runtime-main.312c88a8.js.map",
+    "static/css/2.2f9ba80b.chunk.css": "/linearlatex/static/css/2.2f9ba80b.chunk.css",
+    "static/js/2.96f910df.chunk.js": "/linearlatex/static/js/2.96f910df.chunk.js",
+    "static/js/2.96f910df.chunk.js.map": "/linearlatex/static/js/2.96f910df.chunk.js.map",
+    "static/js/3.6528cddc.chunk.js": "/linearlatex/static/js/3.6528cddc.chunk.js",
+    "static/js/3.6528cddc.chunk.js.map": "/linearlatex/static/js/3.6528cddc.chunk.js.map",
+    "index.html": "/linearlatex/index.html",
+    "static/css/2.2f9ba80b.chunk.css.map": "/linearlatex/static/css/2.2f9ba80b.chunk.css.map",
+    "static/css/main.8c8b27cf.chunk.css.map": "/linearlatex/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.96f910df.chunk.js.LICENSE.txt": "/linearlatex/static/js/2.96f910df.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.312c88a8.js",
+    "static/css/2.2f9ba80b.chunk.css",
+    "static/js/2.96f910df.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.d5146b96.chunk.js"
+  ]
+}
