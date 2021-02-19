@@ -7,10 +7,12 @@ export default function Latex({ operations }) {
         try {
             var newLatex = "";
             newLatex += getInitialMatrix(operations[0]) + "\n\n";
-            newLatex += "Obtain RREF:\n\n"
+            newLatex += "\\noindent Obtain RREF:\n\n"
             for(var i = 0; i < operations.length - 1; i++) {
                 newLatex += getOpLatex(operations[i]) + "\n\n";
             }
+            newLatex += "\\noindent The augmented matrix in reduced row echelon form derived above can be written as the system of equations:\n\n"
+            newLatex += getSystemLatex(operations[operations.length - 2]);
             setLatex(newLatex);
         } catch (error) {
             setLatex("Error parsing data")
@@ -31,11 +33,11 @@ export default function Latex({ operations }) {
         for(var i = 0; i < operation.matrix.length; i++) {
             for(var j = 0; j < operation.matrix[i].length; j++) {
                 if(j != operation.matrix[i].length - 1) {
-                    opLatex += ldisplay(operation.matrix[i][j]) + " & ";
+                    opLatex += ldisplay(operation.matrix[i][j], true) + " & ";
                 } else if(i == operation.matrix.length - 1) {
-                    opLatex += ldisplay(operation.matrix[i][j]) + "\n";
+                    opLatex += ldisplay(operation.matrix[i][j], true) + "\n";
                 } else {
-                    opLatex += ldisplay(operation.matrix[i][j]) + "\\\\\n";
+                    opLatex += ldisplay(operation.matrix[i][j], true) + "\\\\\n";
                 }
             }
         }
@@ -52,11 +54,11 @@ export default function Latex({ operations }) {
         for(var i = 0; i < operation.prevMatrix.length; i++) {
             for(var j = 0; j < operation.prevMatrix[i].length; j++) {
                 if(j != operation.prevMatrix[i].length - 1) {
-                    opLatex += ldisplay(operation.prevMatrix[i][j]) + " & ";
+                    opLatex += ldisplay(operation.prevMatrix[i][j], true) + " & ";
                 } else if(i == operation.prevMatrix.length - 1) {
-                    opLatex += ldisplay(operation.prevMatrix[i][j]) + "\n";
+                    opLatex += ldisplay(operation.prevMatrix[i][j], true) + "\n";
                 } else {
-                    opLatex += ldisplay(operation.prevMatrix[i][j]) + "\\\\\n";
+                    opLatex += ldisplay(operation.prevMatrix[i][j], true) + "\\\\\n";
                 }
             }
         }
@@ -65,10 +67,40 @@ export default function Latex({ operations }) {
         return opLatex;
     }
 
-    const ldisplay = (frac) => {
-        if(frac[1] == 1 && frac[0] == 1) {
+    const getSystemLatex = (operation) => {
+        var opLatex = "";
+        opLatex += "\\begin{displaymath}\n";
+        opLatex += "\\systeme{\n";
+        for(var i = 0; i < operation.matrix.length; i++) {
+            var first = true;
+            for(var j = 0; j < operation.matrix[i].length; j++) {
+                if(j == operation.matrix[i].length - 1) {
+                    if(i == operation.matrix.length - 1) {
+                        opLatex += " = " + ldisplay(operation.matrix[i][j], true) + "\n";
+                    } else {
+                        opLatex += " = " + ldisplay(operation.matrix[i][j], true) + ",\n";
+                    }
+                } else if(operation.matrix[i][j][0] != 0) {
+                    if(first) {
+                        opLatex += ldisplay(operation.matrix[i][j]) + "x_" + (j + 1);
+                        first = false;
+                    } else {
+                        opLatex += " + " + ldisplay(operation.matrix[i][j]) + "x_" + (j + 1);
+                    }
+                } else if(j == operation.matrix.length - 2 && first) {
+                    opLatex += ldisplay(operation.matrix[i][j]);
+                }
+            }
+        }
+        opLatex += "}\n";
+        opLatex += "\\end{displaymath}";
+        return opLatex;
+    }
+
+    const ldisplay = (frac, display1=false) => {
+        if(!display1 && frac[1] == 1 && frac[0] == 1) {
             return "";
-        } else if(frac[1] == 1 && frac[0] == -1) {
+        } else if(!display1 && frac[1] == 1 && frac[0] == -1) {
             return "-";
         } else if(frac[1] == 1) {
             return frac[0];
