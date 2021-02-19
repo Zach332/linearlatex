@@ -30,6 +30,7 @@ function App() {
     const reset = () => {
         setMatrix(firstMatrixState);
         setOperations(firstOperationsState);
+        window.location.reload();
     }
 
     return (
