@@ -14,7 +14,6 @@ export const getOperations = () => {
 export const getMatrix = () => {
     const matrixFromStorage = localStorage.getItem(matrixPersistenceKey);
     const matrixObject = JSON.parse(matrixFromStorage);
-    console.log(matrixObject)
     const matrix = matrixFromStorage === null ? firstMatrixState : matrixObject;
 
     return matrix;

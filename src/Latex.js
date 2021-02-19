@@ -98,6 +98,13 @@ export default function Latex({ operations }) {
     }
 
     const ldisplay = (frac, display1=false) => {
+        if(frac.length > 2) {
+            if(frac[0] == 0) {
+                return ldisplay(frac[2][0], display1) + frac[2][1];
+            } else {
+                return ldisplay(frac.slice(0,2), display1) + " + " + ldisplay(frac[2][0], display1) + frac[2][1];
+            }
+        }
         if(!display1 && frac[1] == 1 && frac[0] == 1) {
             return "";
         } else if(!display1 && frac[1] == 1 && frac[0] == -1) {
