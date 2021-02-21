@@ -7,7 +7,7 @@ export default function Latex({ operations }) {
         try {
             var newLatex = "";
             newLatex += getInitialMatrix(operations[0]) + "\n\n";
-            newLatex += "\\noindent Obtain RREF:\n\n"
+            newLatex += "\\noindent Reduce:\n\n"
             for(var i = 0; i < operations.length - 1; i++) {
                 newLatex += getOpLatex(operations[i]) + "\n\n";
             }
