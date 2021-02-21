@@ -87,7 +87,7 @@ export default function Latex({ operations }) {
                     } else {
                         opLatex += " + " + ldisplay(operation.matrix[i][j]) + "x_" + (j + 1);
                     }
-                } else if(j == operation.matrix.length - 2 && first) {
+                } else if(j == operation.matrix.length[i] - 2 && first) {
                     opLatex += ldisplay(operation.matrix[i][j]);
                 }
             }
