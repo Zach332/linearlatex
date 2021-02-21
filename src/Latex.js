@@ -126,7 +126,7 @@ export default function Latex({ operations }) {
                 <button className="btn btn-info me-3" onClick={() => {navigator.clipboard.writeText(latex)}}>Copy to clipboard</button>
                 <a href="https://www.overleaf.com/" target="_blank" className="btn btn-primary">Overleaf</a>
                 <p className="card-text" style={{ whiteSpace: "pre", textAlign: "left" }}>
-                    {"Remember to add:\n\\usepackage{amsmath}\n\\usepackage{amssymb}\n\\usepackage{systeme}}"}
+                    {"Remember to add:\n\\usepackage{amsmath}\n\\usepackage{amssymb}\n\\usepackage{systeme}"}
                 </p>
             </div>
         </div>
