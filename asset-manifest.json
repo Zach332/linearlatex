@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/linearlatex/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/linearlatex/static/js/main.fa64b08c.chunk.js",
-    "main.js.map": "/linearlatex/static/js/main.fa64b08c.chunk.js.map",
+    "main.js": "/linearlatex/static/js/main.960b3da1.chunk.js",
+    "main.js.map": "/linearlatex/static/js/main.960b3da1.chunk.js.map",
     "runtime-main.js": "/linearlatex/static/js/runtime-main.312c88a8.js",
     "runtime-main.js.map": "/linearlatex/static/js/runtime-main.312c88a8.js.map",
     "static/css/2.2f9ba80b.chunk.css": "/linearlatex/static/css/2.2f9ba80b.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.2f9ba80b.chunk.css",
     "static/js/2.96f910df.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.fa64b08c.chunk.js"
+    "static/js/main.960b3da1.chunk.js"
   ]
 }
