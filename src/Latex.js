@@ -11,7 +11,7 @@ export default function Latex({ operations }) {
             for(var i = 0; i < operations.length - 1; i++) {
                 newLatex += getOpLatex(operations[i]) + "\n\n";
             }
-            newLatex += "\\noindent The augmented matrix in reduced row echelon form derived above can be written as the system of equations:\n\n"
+            newLatex += "\\noindent The augmented matrix derived above can be written as the system of equations:\n\n"
             newLatex += getSystemLatex(operations[operations.length - 2]);
             setLatex(newLatex);
         } catch (error) {
