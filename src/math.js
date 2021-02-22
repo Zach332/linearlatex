@@ -8,6 +8,16 @@ export const frac = (input) => {
         var num = parseInt(parts[0]);
         var den = parts.length > 1?parseInt(parts[1]):1;
         return [0, 1, [[num,den], variable]];
+    } else if (input.length > 2 && input.includes("_")) {
+        var index = input.indexOf("_");
+        var variable = input.slice(index-1);
+        if(index == 1) {
+            return [0, 1, [[1, 1], variable]];
+        }
+        var parts = input.slice(0,input.length - index - 1).split("/");
+        var num = parseInt(parts[0]);
+        var den = parts.length > 1?parseInt(parts[1]):1;
+        return [0, 1, [[num,den], variable]];
     }
     if(input == "")return [0,1];
     var parts = input.split("/");
