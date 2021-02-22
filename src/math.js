@@ -71,17 +71,22 @@ const getVar = (frac, varName) => {
     return null;
 }
 
-export const display = (frac) => {
+export const display = (frac, display1=true) => {
     if(frac == null)return "";
     if(frac.length == 3) {
         if(frac[0] == 0) {
-            return display(frac[2][0]) + frac[2][1];
+            return display(frac[2][0], false) + frac[2][1];
         } else {
-            return display(frac.slice(0,2)) + " + " + display(frac[2][0]) + frac[2][1];
+            return display(frac.slice(0,2)) + " + " + display(frac[2][0], false) + frac[2][1];
         }
     }
     if(frac.length > 3) {
-        return display(frac[frac.length-1][0]) + frac[frac.length-1][1] + " + " + display(frac.slice(0,frac.length - 1))
+        return display(frac[frac.length-1][0], false) + frac[frac.length-1][1] + " + " + display(frac.slice(0,frac.length - 1))
+    }
+    if(!display1 && frac[1] == 1 && frac[0] == 1) {
+        return "";
+    } else if(!display1 && frac[1] == 1 && frac[0] == -1) {
+        return "-";
     }
     if(frac[1] == 1) {
         return frac[0];
